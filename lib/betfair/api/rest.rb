@@ -24,6 +24,22 @@ module Betfair
             end
           end
         end
+
+        define_method :list_race_details do |body = nil|
+          raise "Not signed in" unless ["X-Authentication", "X-Application"].all? { |k| persistent_headers.key?(k) }
+
+          post(
+            url: "https://api.betfair.com/exchange/scores/json-rpc/v1",
+            body: [
+              {
+                jsonrpc: "2.0",
+                method: "ScoresAPING/v1.0/listRaceDetails",
+                params: body,
+                id: 1
+              }
+            ].to_json
+          )
+        end
       end
 
       def interactive_login(username, password)
