@@ -15,7 +15,7 @@ module Betfair
                 :list_countries, :list_current_orders, :list_cleared_orders,
                 :list_market_types, :list_time_ranges, :list_venues, :place_orders,
                 :cancel_orders, :replace_orders, :update_orders],
-      account: [:get_account_funds]
+      account: [:get_account_funds, :get_account_statement]
     }
 
     attr_accessor :settings, :request_opts, :persistent_headers
